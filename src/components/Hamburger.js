@@ -1,5 +1,6 @@
 import React, { useState } from "react";
-import { Spin as Hamburger } from 'hamburger-react'
+import { Spin as Hamburger } from "hamburger-react";
+import "../styles/hamburger.css"
 
 // https://hamburger-react.netlify.app/
 
@@ -11,15 +12,16 @@ const Samburger = () => {
         <div className="Hamburger">
             <Hamburger 
                 size={20}
+                duration={0.7}
                 colour="#ffffff"
                 toggled={isOpen}
                 toggle={setOpen}
             />
             {isOpen && (
-            <div className="MenuItems">
-                <p>Menu Item 1</p>
-                <p>Menu Item 2</p>
-                <p>Menu Item 3</p>
+            <div className="Menu">
+                <p className="menu-items">Menu Item 1</p>
+                <p className="menu-items">Menu Item 2</p>
+                <p className="menu-items">Menu Item 3</p>
             </div>
             )};
         </div>

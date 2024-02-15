@@ -1,1 +1,21 @@
 /* do something here eventually */
+
+.Samburger {
+    position: fixed;
+    top: 20px;
+    right: 20px;
+}
+
+.Menu {
+    display: flex;
+    flex-direction: column; 
+    /* position: fixed; */
+    padding: 5px;
+  }
+  
+  .menu-items {
+    padding: 5px;
+    margin: 4px;
+    background-color: #e9e4e4;
+    border-radius: 8px;
+  }
