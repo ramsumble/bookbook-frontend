@@ -1,5 +1,6 @@
 import React from "react";
 import BookSearch from "../components/Booksearch";
+import Samburger from "../components/Hamburger";
 
 const SearchPage = () => {
     return(
@@ -9,7 +10,7 @@ const SearchPage = () => {
             </div>
             <div classname="row2">
                 <BookSearch />
-
+                <Samburger />
             </div>
         </div>
 
