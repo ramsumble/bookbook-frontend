@@ -25,6 +25,9 @@
   background: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)), url("../images/02fa6f11-994a-4933-995e-78305321d13d.png");
 }
 
+.row1 h1 {
+  text-align: center;
+}
 .row2, .row1 {
   flex: 1;
 }
