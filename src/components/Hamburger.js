@@ -23,7 +23,7 @@ const Samburger = () => {
                 <p className="menu-items">Menu Item 2</p>
                 <p className="menu-items">Menu Item 3</p>
             </div>
-            )};
+            )}
         </div>
 
     );
