@@ -11,23 +11,34 @@
   display: flex;
   flex-direction: row;
   position: relative;
-  background-color: #282c34;
+  /* background-color: #7c4d109d; */
+  background-image: linear-gradient(to right, rgb(209, 185, 154), rgb(177, 96, 5));
 }
 
 /* content is used to contain the image, need to use a linear-gradiant so the image isn't so bright  */
-.row1 ::before {
+.row1 {
   content: ""; 
   position: absolute;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
   top: 0;
   left: 0;
   width: 50%;
   height: 100%;
-  background: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)), url("../images/02fa6f11-994a-4933-995e-78305321d13d.png");
+  background: linear-gradient(rgba(0,0,0,0.2), rgba(0,0,0,0.2)), url("../images/02fa6f11-994a-4933-995e-78305321d13d.png");
+  border-radius: 0px 205px 35px 0px;
+  text-align: center;
+  font-family: "Indie Flower", cursive;
+  color: #fae0e0;
 }
 
-.row1 h1 {
-  text-align: center;
+.Quote-heading {
+  padding: 5rem;
 }
+
+
 .row2, .row1 {
   flex: 1;
 }
@@ -40,7 +51,7 @@
 .Booksearch-container {
   flex: 5;
   display: flex;
-  justify-content: center;
+  justify-content: right;
   align-items: center;
 }
 
