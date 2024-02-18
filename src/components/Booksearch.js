@@ -12,6 +12,7 @@ const BookSearch = ({ onSearchResults }) => {
   // Function to handle the search button click
   const handleSearch = async () => {
     try {
+      toast.info("Searching")
       const response = await axios.get(`${process.env.REACT_APP_BACKEND_URL}`, {
         params: { searchTerm },
       });
@@ -22,7 +23,6 @@ const BookSearch = ({ onSearchResults }) => {
       // pass the search results to the parent component
       onSearchResults(response.data);
 
-      toast.success("Search complete! :)")
     } catch (error) {
       // console.error('Error searching books:', error);
       toast.error("Error searching books")
@@ -52,7 +52,7 @@ const BookSearch = ({ onSearchResults }) => {
       </button>
       <ToastContainer 
       position="bottom-center"
-      autoClose={2500}
+      autoClose={1000}
       hideProgressBar={true}
       newestOnTop={true}
       closeOnClick={true}

@@ -16,6 +16,14 @@
   font-family: "Indie Flower", cursive;
 }
 
+.body {
+  background-image: linear-gradient(to top, rgb(194, 133, 63), rgb(131, 89, 34));
+}
+
+.boarder {
+  background-image: linear-gradient(to bottom, rgb(131, 89, 34), rgb(163, 129, 84));
+  padding: 7px;
+}
 
 /* content is used to contain the image, need to use a linear-gradiant so the image isn't so bright  */
 .row1 {
@@ -60,3 +68,15 @@
   padding-right: 1%;
 }
 
+.card {
+  border: 1px solid #000000;
+  padding: 5px;
+  /* background: linear-gradient(#8bc3eb, #94c9f0, #5fb2ee) */
+  background-color: #b2c1ce
+}
+
+.card-container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-around;
+}

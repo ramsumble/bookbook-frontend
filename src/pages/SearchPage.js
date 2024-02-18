@@ -1,5 +1,6 @@
 import BookSearch from "../components/Booksearch";
 import Samburger from "../components/Hamburger";
+import BookCard from "../components/Cards";
 import "../styles/SearchPage.css"
 import RandomQuoteComponent from "../components/Quotes";
 import { useState } from "react";
@@ -26,16 +27,16 @@ const SearchPage = () => {
             </div>
           </div>
         </div>
+        <div className="boarder"></div>
         <div className="body">
-          {/* Display the search results */}
-          <ul>
+          <div className="card-container">
             {searchResults.map((book) => (
-              <li key={book._id}>{book.title}</li>
+              <BookCard key={book._id} book={book} />
             ))}
-          </ul>
         </div>
-      </>
-    );
-  };
+      </div>
+    </>
+  );
+};
   
-  export default SearchPage;
+export default SearchPage;
