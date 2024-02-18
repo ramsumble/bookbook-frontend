@@ -1,5 +1,7 @@
 import React, { useState } from 'react';
 import axios from 'axios';
+import '@fortawesome/fontawesome-free/css/all.css';
+
 
 const BookSearch = ({ onSearchResults }) => {
   const [searchTerm, setSearchTerm] = useState('');
@@ -24,12 +26,16 @@ const BookSearch = ({ onSearchResults }) => {
 
   return (
     <div>
+      <h2>Have a book in mind?</h2>
       <input
         type="text"
         value={searchTerm}
         onChange={(e) => setSearchTerm(e.target.value)}
+        placeholder='Search here :)'
       />
-      <button onClick={handleSearch}>Search</button>
+      <button onClick={handleSearch}> 
+        <i class="fa-solid fa-magnifying-glass"></i>
+      </button>
     </div>
   );
 };
