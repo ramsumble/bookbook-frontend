@@ -23,6 +23,11 @@ const BookSearch = ({ onSearchResults }) => {
       console.error('Error searching books:', error);
     }
   };
+  const handleKeyPress = (e) => {
+    if (e.key === 'Enter') {
+      handleSearch();
+    }
+  };
 
   return (
     <div>
@@ -31,6 +36,7 @@ const BookSearch = ({ onSearchResults }) => {
         type="text"
         value={searchTerm}
         onChange={(e) => setSearchTerm(e.target.value)}
+        onKeyDown={handleKeyPress}
         placeholder='Search here :)'
       />
       <button onClick={handleSearch}> 
