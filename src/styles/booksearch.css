@@ -1,0 +1,14 @@
+
+
+.search-bar {
+    border-radius: 4px;
+    border: none;
+    height: 20px;
+    padding: auto;
+}
+
+.search-button {
+    border-radius: 4px;
+    border: none;
+    height: 22px;
+}

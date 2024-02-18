@@ -1,7 +1,9 @@
 import React, { useState } from 'react';
 import axios from 'axios';
 import '@fortawesome/fontawesome-free/css/all.css';
-
+import "../styles/booksearch.css"
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 const BookSearch = ({ onSearchResults }) => {
   const [searchTerm, setSearchTerm] = useState('');
@@ -19,8 +21,11 @@ const BookSearch = ({ onSearchResults }) => {
 
       // pass the search results to the parent component
       onSearchResults(response.data);
+
+      toast.success("Search complete! :)")
     } catch (error) {
-      console.error('Error searching books:', error);
+      // console.error('Error searching books:', error);
+      toast.error("Error searching books")
     }
   };
   const handleKeyPress = (e) => {
@@ -33,15 +38,30 @@ const BookSearch = ({ onSearchResults }) => {
     <div>
       <h2>Have a book in mind?</h2>
       <input
+        className="search-bar"
         type="text"
         value={searchTerm}
         onChange={(e) => setSearchTerm(e.target.value)}
         onKeyDown={handleKeyPress}
         placeholder='Search here :)'
       />
-      <button onClick={handleSearch}> 
+      <button 
+      onClick={handleSearch}
+      className='search-button'> 
         <i class="fa-solid fa-magnifying-glass"></i>
       </button>
+      <ToastContainer 
+      position="bottom-center"
+      autoClose={2500}
+      hideProgressBar={true}
+      newestOnTop={true}
+      closeOnClick={true}
+      rtl={false}
+      pauseOnFocusLoss={false}
+      draggable={false}
+      pauseOnHover={false}
+      theme="light"
+      />
     </div>
   );
 };
