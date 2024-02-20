@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { Spin as Hamburger } from "hamburger-react";
 import "../styles/hamburger.css"
+import { Link } from 'react-router-dom';
 
 // https://hamburger-react.netlify.app/
 
@@ -19,8 +20,9 @@ const Samburger = () => {
             />
             {isOpen && (
             <div className="Menu">
-                <p className="menu-items">Menu Item 1</p>
+                <Link to="/register">Go to Register Page</Link>
                 <p className="menu-items">Menu Item 2</p>
+                <p className="menu-items">Menu Item 3</p>
                 <p className="menu-items">Menu Item 3</p>
             </div>
             )}
