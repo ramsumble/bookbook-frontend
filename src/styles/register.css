@@ -1,0 +1,41 @@
+
+
+.form-data {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    height: 100vh;
+    background-image: linear-gradient( to right, rgb(231, 213, 196), rgb(241, 183, 96)); 
+}
+
+.form-container {
+    display: flex;
+    padding: 18vh;
+    border-radius: 8px;
+    background-image: linear-gradient(to bottom, rgb(206, 143, 71), rgb(145, 100, 42));
+}
+
+
+.register-container {
+    flex: 1;
+    padding: 20px;
+    width: 40%;
+    
+}
+
+.sign-in-container {
+    flex: 1;
+    padding: 20px;
+    width: 40%;
+}
+
+
+.form-data input {
+    border-radius: 8px;
+    border: 1px solid gray;
+    margin: 8px;
+    padding: 6px 12px;
+    font-size: 13px;
+    outline: none;
+}
