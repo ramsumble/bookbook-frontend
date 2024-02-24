@@ -11,25 +11,27 @@
 
 .form-container {
     display: flex;
+    position: relative;
     padding: 18vh;
     border-radius: 8px;
-    background-image: linear-gradient(to bottom, rgb(206, 143, 71), rgb(145, 100, 42));
+    background: linear-gradient(to bottom, rgb(206, 143, 71), rgb(145, 100, 42));
+    background-size: 50% auto;
+    background-position: left center;
+    background-repeat: no-repeat;
+    width: 60%
 }
 
-
-.register-container {
+.register-container, .redundant-container {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    justify-content: left;
     flex: 1;
-    padding: 20px;
-    width: 40%;
-    
 }
 
-.sign-in-container {
-    flex: 1;
-    padding: 20px;
-    width: 40%;
+.register-container p{
+    margin-top: 20px;
 }
-
 
 .form-data input {
     border-radius: 8px;
@@ -38,4 +40,17 @@
     padding: 6px 12px;
     font-size: 13px;
     outline: none;
+}
+
+.image-container {
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    width: 50%; 
+    background: url("../images/f182a449-67bf-4638-83ed-288265a26571.png") center/cover no-repeat; 
+    border-top-right-radius: 8px;
+    border-bottom-right-radius: 8px;
+    box-sizing: border-box;
+    background-origin: content-box;
 }
