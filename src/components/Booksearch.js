@@ -13,9 +13,23 @@ const BookSearch = ({ onSearchResults }) => {
   const handleSearch = async () => {
     try {
       toast.info("Searching")
-      const response = await axios.get(`${process.env.REACT_APP_BACKEND_URL}`, {
+
+      const token = localStorage.getItem('token');
+
+      console.log(token)
+      
+      // const response = await axios.get(`${process.env.REACT_APP_BACKEND_URL}`, {
+      //   params: { searchTerm },
+      // });
+
+      const response = await axios.get(`${process.env.REACT_APP_BACKEND_URL}`, 
+      {
         params: { searchTerm },
-      });
+        headers: {
+            Authorization: `${token}`,
+        },
+    }
+);
 
       // update the parent component state with the search results
       setSearchResults(response.data);
@@ -48,7 +62,7 @@ const BookSearch = ({ onSearchResults }) => {
       <button 
       onClick={handleSearch}
       className='search-button'> 
-        <i class="fa-solid fa-magnifying-glass"></i>
+        <i className="fa-solid fa-magnifying-glass"></i>
       </button>
       <ToastContainer 
       position="bottom-center"
