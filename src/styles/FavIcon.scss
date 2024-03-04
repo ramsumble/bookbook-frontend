@@ -1,0 +1,94 @@
+@import "~compass-mixins/lib/compass";
+
+
+// https://codepen.io/chapolito/pen/AVaaoY
+
+
+$starBlue: #cfeaf3;
+$starYellow: #ffa64d;
+$starYellowLight: lighten($starYellow, 20%);
+$starYellowLighter: lighten($starYellow, 30%);
+$starYellowDark: darken($starYellow, 20%);
+$starYellowDarker: darken($starYellow, 30%);
+
+
+svg {
+  height: 24px;
+  width: 24px;
+  position: relative;
+  left: 8px;
+  top: 8px;
+  polygon {
+    @include scale(0.5, 0.5);
+    opacity: 1;
+    position: relative;
+    stroke-width: 5;
+    fill-rule: nonzero;
+    stroke-linejoin: round;
+  }
+}
+
+.starOff {
+  polygon {
+    fill: $starBlue;
+    stroke: $starBlue;
+  }
+  svg {
+  &:hover {
+    left: 2px;
+    top: 2px;
+    polygon {  
+      fill: $starYellowLight;
+      stroke: $starYellowLight;
+      @include scale(1.0, 1.0);
+    }
+  }
+  &:active {
+    left: 8px;
+    top: 8px;
+    polygon {  
+      fill: $starYellow;
+      stroke: $starYellow;
+      @include scale(0.5, 0.5);
+    }
+  }
+  }
+}
+
+.starOn {
+  polygon {
+    fill: $starYellow;
+    stroke: $starYellow;
+    opacity: 1.0;
+  }
+  svg { 
+    &:hover {
+      left: 2px;
+      top: 2px;
+    polygon {  
+      fill: $starYellowDark;
+      stroke: $starYellowDark;
+      @include scale(1.0, 1.0);
+    }
+  }
+  
+  &:active {
+    polygon {  
+      fill: $starYellow;
+      stroke: $starYellow;
+    }
+  }
+  }
+  -webkit-animation: highlight 4s ease-out 1 normal;
+  -moz-animation: highlight 4s ease-out 1 normal;
+  animation: highlight 4s ease-out 1 normal;
+}
+
+
+.starOff svg, .starOff polygon {
+  @include transition(all 400ms cubic-bezier(0.570, 0.020, 0.445, 1.340)); 
+}
+
+.starOn svg, .starOn polygon {
+    @include transition(all 200ms cubic-bezier(0.270, 1.440, 0.880, 1.330));
+}

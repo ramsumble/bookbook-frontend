@@ -1,6 +1,7 @@
 import React from 'react';
 import 'bootstrap/dist/css/bootstrap.min.css'; 
 import Card from 'react-bootstrap/Card';
+import FavIcon from './FavouriteIcon';
 import '../styles/card.css'
 
 const BookCard = ({ book }) => (
@@ -10,6 +11,7 @@ const BookCard = ({ book }) => (
         <Card.Body className='card-body'>
             <Card.Title>{book.title}</Card.Title>
             <Card.Text>{book.author}</Card.Text>
+            <FavIcon />
         </Card.Body>
         </Card>
         </>
