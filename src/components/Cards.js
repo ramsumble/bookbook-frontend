@@ -11,7 +11,7 @@ const BookCard = ({ book }) => (
         <Card.Body className='card-body'>
             <Card.Title>{book.title}</Card.Title>
             <Card.Text>{book.author}</Card.Text>
-            <FavIcon />
+            <FavIcon bookData={book} />
         </Card.Body>
         </Card>
         </>

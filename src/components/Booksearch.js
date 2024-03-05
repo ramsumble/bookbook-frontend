@@ -18,9 +18,6 @@ const BookSearch = ({ onSearchResults }) => {
 
       console.log(token)
       
-      // const response = await axios.get(`${process.env.REACT_APP_BACKEND_URL}`, {
-      //   params: { searchTerm },
-      // });
 
       const response = await axios.get(`${process.env.REACT_APP_BACKEND_URL}`, 
       {

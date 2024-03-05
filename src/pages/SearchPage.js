@@ -30,6 +30,7 @@ const SearchPage = () => {
         <div className="boarder"></div>
         <div className="body">
           <div className="card-container">
+            {console.log(searchResults)}
             {searchResults.map((book) => (
               <BookCard key={book._id} book={book} />
             ))}

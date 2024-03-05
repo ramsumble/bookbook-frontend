@@ -24,10 +24,13 @@ const LoginForm = () => {
         }
       );
 
-      const { token } = response.data;
+      const { token, userId } = response.data;
 
-      // Store the token securely
+      // Store login data to localstorage
       localStorage.setItem('token', token);
+      localStorage.setItem('userId', userId);
+
+      console.log(userId)
 
       // Redirect after logging in
       navigate('/search');
