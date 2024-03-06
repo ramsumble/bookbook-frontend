@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css2?family=Indie+Flower&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Madimi+One&display=swap');
 
 
 .login-form-data {
@@ -12,7 +14,7 @@
 .login-form-container {
     display: flex;
     position: relative;
-    padding: 18vh;
+    padding: 20vh;
     border-radius: 8px;
     background: linear-gradient(to bottom, rgb(206, 143, 71), rgb(145, 100, 42));
     background-position: right center;
@@ -25,12 +27,31 @@
     align-items: center;
     flex-direction: column;
     justify-content: right;
+    margin-left: 15vw; 
     flex: 1;
 }
 
 .login-container p{
     margin-top: 20px;
+    font-family: "Indie Flower", cursive;
+    font-weight: 600;
 }
+
+.login-container h2{
+    font-family: "Madimi One", sans-serif;
+    font-weight: 400;
+    font-style: normal;
+}
+
+.Register-link {
+    text-decoration: none;
+    color:rgba(0, 0, 255, 1)
+}
+
+.Register-link:hover {
+    color:rgb(89, 89, 211)
+}
+
 
 .login-form-data input {
     border-radius: 8px;
@@ -38,8 +59,13 @@
     margin: 8px;
     padding: 6px 12px;
     font-size: 13px;
+    font-weight: 400;
     outline: none;
+    transition: all 0.25s ease-in-out;
+    -webkit-transition: all 0.25s ease-in-out;
+    -moz-transition: all 0.25s ease-in-out;
 }
+
 
 .login-image-container {
     position: absolute;
@@ -53,3 +79,11 @@
     box-sizing: border-box;
     background-origin: content-box;
 }
+
+input:focus {
+    border: 1px solid rgb(51, 51, 211);
+    box-shadow: 0 0 5px rgba(0, 0, 255, 1);
+    -webkit-box-shadow: 0 0 5px rgba(0, 0, 255, 1); 
+    -moz-box-shadow: 0 0 5px rgba(0, 0, 255, 1);
+}
+
