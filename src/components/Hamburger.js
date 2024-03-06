@@ -20,10 +20,11 @@ const Samburger = () => {
             />
             {isOpen && (
             <div className="Menu">
-                <Link to="/register">Go to Register Page</Link>
-                <p className="menu-items">Menu Item 2</p>
-                <p className="menu-items">Menu Item 3</p>
-                <p className="menu-items">Menu Item 3</p>
+                <Link to="/register" className="menu-items">Register</Link>
+                <Link to="/" className="menu-items">Login </Link>
+                <Link to="/search" className="menu-items">Search </Link>
+                <Link to="/my-collection" className="menu-items">My collection </Link>
+                <Link to="/placeholder" className="menu-items">My Progress</Link>
             </div>
             )}
         </div>

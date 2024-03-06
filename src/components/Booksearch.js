@@ -48,19 +48,19 @@ const BookSearch = ({ onSearchResults }) => {
   return (
     <div>
       <h2>Have a book in mind?</h2>
-      <input
-        className="search-bar"
-        type="text"
-        value={searchTerm}
-        onChange={(e) => setSearchTerm(e.target.value)}
-        onKeyDown={handleKeyPress}
-        placeholder='Search here :)'
-      />
-      <button 
-      onClick={handleSearch}
-      className='search-button'> 
-        <i className="fa-solid fa-magnifying-glass"></i>
-      </button>
+        <input
+          className="search-bar"
+          type="text"
+          value={searchTerm}
+          onChange={(e) => setSearchTerm(e.target.value)}
+          onKeyDown={handleKeyPress}
+          placeholder='Search here :)'
+        />
+        <button 
+          onClick={handleSearch}
+          className='search-button '> 
+          <i className="fa-solid fa-magnifying-glass"></i>
+        </button>
       <ToastContainer 
       position="bottom-center"
       autoClose={1000}
