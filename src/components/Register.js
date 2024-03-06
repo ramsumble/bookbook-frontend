@@ -1,8 +1,9 @@
 import React, { useState } from 'react';
-import { toast } from 'react-toastify';
-import { useNavigate } from 'react-router-dom';
+import { ToastContainer, toast } from 'react-toastify';
+import { useNavigate, Link } from 'react-router-dom';
 import 'react-toastify/dist/ReactToastify.css';
 import "../styles/register.css"
+import '../styles/button.scss'
 
 const registerUrl = process.env.REACT_APP_REGISTER_URL;
 
@@ -24,7 +25,7 @@ const RegistrationForm = () => {
 
   const handleFormSubmit = async (e) => {
     e.preventDefault();
-
+  
     try {
       const response = await fetch(registerUrl, {
         method: 'POST',
@@ -32,17 +33,21 @@ const RegistrationForm = () => {
           'Content-Type': 'application/json',
         },
         body: JSON.stringify(formData),
-      }, console.log(formData));
-
+      });
+  
       if (response.ok) {
-        toast.success('User registered successfully');
         navigate('/search');
       } else {
-        console.log("Env file is: " + registerUrl);
+        if (response.status === 400) {
+          toast.error('Registration failed. Please fill in all fields.');
+        } else {
+          toast.error('An unknown error occurred during registration.');
+        }
       }
     } catch (error) {
-        // toast.error('Error during registration');
-        console.log('Error: ' + error)
+      // Handle network or unexpected errors
+      console.error('Error during registration:', error);
+      toast.error('An unexpected error occurred during registration.');
     }
   };
 
@@ -54,8 +59,20 @@ const RegistrationForm = () => {
                 <input type="text" placeholder="Username" name="username" onChange={handleInputChange} />
                 <input type="email" placeholder="Email" name="email" onChange={handleInputChange} />
                 <input type="password" placeholder="Password" name="password" onChange={handleInputChange} />
-                <button type="submit">Register</button>
-                <p>link for login page</p>
+                <button className='fill' type="submit">Register</button>
+                <p>Already a member? <Link to="/" className='Register-link' >Login</Link> </p>
+                <ToastContainer 
+                    position="bottom-center"
+                    autoClose={3000}
+                    hideProgressBar={false}
+                    newestOnTop={true}
+                    closeOnClick={true}
+                    rtl={false}
+                    pauseOnFocusLoss={false}
+                    draggable={false}
+                    pauseOnHover={false}
+                    theme="light"
+                  />
             </div>
             <div className="redundant-container">
             </div>

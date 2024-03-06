@@ -26,7 +26,29 @@
     align-items: center;
     flex-direction: column;
     justify-content: left;
+    margin-right: 8vw;
     flex: 1;
+}
+
+.register-container p{
+    margin-top: 20px;
+    font-family: "Indie Flower", cursive;
+    font-weight: 600;
+}
+
+.register-container h2{
+    font-family: "Madimi One", sans-serif;
+    font-weight: 400;
+    font-style: normal;
+}
+
+.Register-link {
+    text-decoration: none;
+    color:rgba(0, 0, 255, 1)
+}
+
+.Register-link:hover {
+    color:rgb(89, 89, 211)
 }
 
 .register-container p{
