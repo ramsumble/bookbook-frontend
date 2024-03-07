@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import BookCard from './Cards';
 import '../styles/bookCollection.css'
-import Samburger from "../components/Hamburger";
+import Samburger from "./Hamburger";
 
 const BookCollection = () => {
     const [bookCollection, setBookCollection] = useState([]);

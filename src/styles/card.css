@@ -3,3 +3,7 @@
     background-image: linear-gradient(to top, rgb(219, 165, 102), rgb(121, 82, 33));
 } */
 
+.icon-container {
+    display: flex; 
+    justify-content: flex-start; 
+}

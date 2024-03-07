@@ -80,10 +80,9 @@
     background-origin: content-box;
 }
 
-input:focus {
+.login-input:focus {
     border: 1px solid rgb(51, 51, 211);
     box-shadow: 0 0 5px rgba(0, 0, 255, 1);
     -webkit-box-shadow: 0 0 5px rgba(0, 0, 255, 1); 
     -moz-box-shadow: 0 0 5px rgba(0, 0, 255, 1);
 }
-

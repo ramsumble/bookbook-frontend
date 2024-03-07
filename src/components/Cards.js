@@ -1,8 +1,9 @@
 import React from 'react';
 import 'bootstrap/dist/css/bootstrap.min.css'; 
 import Card from 'react-bootstrap/Card';
-import FavIcon from './FavouriteIcon';
+import FavIcon from './AddToFavourites';
 import '../styles/card.css'
+import CollectionIcon from './AddToCollection';
 
 const BookCard = ({ book }) => (
         <>
@@ -11,7 +12,10 @@ const BookCard = ({ book }) => (
         <Card.Body className='card-body'>
             <Card.Title>{book.title}</Card.Title>
             <Card.Text>{book.author}</Card.Text>
-            <FavIcon bookData={book} />
+            <div className='icon-container'>
+                <FavIcon bookData={book} />
+                <CollectionIcon bookData={book}/>
+            </div>
         </Card.Body>
         </Card>
         </>
