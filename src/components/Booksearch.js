@@ -7,6 +7,7 @@ import 'react-toastify/dist/ReactToastify.css';
 
 const BookSearch = ({ onSearchResults }) => {
   const [searchTerm, setSearchTerm] = useState('');
+  // eslint-disable-next-line 
   const [searchResults, setSearchResults] = useState([]);
 
   // Function to handle the search button click

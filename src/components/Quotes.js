@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import quotes from '../utils/quotes';
 
 const RandomQuoteComponent = () => {
+    // eslint-disable-next-line 
     const [randomQuote, setRandomQuote] = useState(() => {
         const selectedQuote = quotes[Math.floor(Math.random() * quotes.length)];
         return selectedQuote;
