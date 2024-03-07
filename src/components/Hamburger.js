@@ -24,7 +24,7 @@ const Samburger = () => {
                 <Link to="/" className="menu-items">Login </Link>
                 <Link to="/search" className="menu-items">Search </Link>
                 <Link to="/my-collection" className="menu-items">My collection </Link>
-                <Link to="/placeholder" className="menu-items">My Progress</Link>
+                <Link to="/my-progress" className="menu-items">My Progress</Link>
             </div>
             )}
         </div>
