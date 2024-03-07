@@ -4,6 +4,7 @@ import Card from 'react-bootstrap/Card';
 import FavIcon from './AddToFavourites';
 import '../styles/card.css'
 import CollectionIcon from './AddToCollection';
+import ReadIcon from './AddToReadCollection';
 
 const BookCard = ({ book }) => (
         <>
@@ -15,6 +16,7 @@ const BookCard = ({ book }) => (
             <div className='icon-container'>
                 <FavIcon bookData={book} />
                 <CollectionIcon bookData={book}/>
+                <ReadIcon bookData={book}/>
             </div>
         </Card.Body>
         </Card>
