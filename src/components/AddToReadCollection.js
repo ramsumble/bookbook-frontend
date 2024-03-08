@@ -31,33 +31,51 @@ const FavIcon = ({ bookData }) => {
   const handleIconClick = async () => {
     try {
       const userId = localStorage.getItem('userId');
+      const token = localStorage.getItem('token');  
 
-      const requests = [
-        axios.post(
+      if (isIconOn) {
+        // Book is already in collection, remove it
+        const removeFromReadingResponse = await axios.delete(
           process.env.REACT_APP_USER_READLIST_URL,
-          { userId, bookData },
           {
             headers: {
-              Authorization: `Bearer ${localStorage.getItem('token')}`,
-            }
+              Authorization: `${token}`,
+            },
+            data: {
+              bookData: { _id: bookData._id }, 
+            },
           }
-        ),
-        axios.post(
-          process.env.REACT_APP_COLLECTIONS_URL,
-          { userId, bookData },
-          {
-            headers: {
-              Authorization: `Bearer ${localStorage.getItem('token')}`,
+        );
+  
+        console.log('Remove from favorites response:', removeFromReadingResponse.data);
+
+      } else {    
+        const requests = [
+          axios.post(
+            process.env.REACT_APP_USER_READLIST_URL,
+            { userId, bookData },
+            {
+              headers: {
+                Authorization: `Bearer ${localStorage.getItem('token')}`,
+              }
             }
-          }
-        ),
-      ]
+          ),
+          axios.post(
+            process.env.REACT_APP_COLLECTIONS_URL,
+            { userId, bookData },
+            {
+              headers: {
+                Authorization: `Bearer ${localStorage.getItem('token')}`,
+              }
+            }
+          ),
+        ]
 
-      await Promise.all(requests);
-
+        await Promise.all(requests);
+      }
 
       // Update the state so icon remains on if book is in relevant collection
-      setIsIconOn(true);
+      setIsIconOn(!isIconOn);
     } catch (error) {
       console.error('Error adding book to collection:', error.response?.data || error.message);
     }

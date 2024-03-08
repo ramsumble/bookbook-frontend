@@ -31,20 +31,37 @@ const CollectionIcon = ({ bookData }) => {
   const handleIconClick = async () => {
     try {
       const userId = localStorage.getItem('userId');
-
-      await axios.post(
-        `${process.env.REACT_APP_COLLECTIONS_URL}`,
-        { userId, bookData: { title: bookData.title, author: bookData.author } },
-        {
-          headers: {
-            Authorization: `Bearer ${localStorage.getItem('token')}`,
-          },
-        }
-      );
-
-      setIsIconOn(true);
+      const token = localStorage.getItem('token');
+  
+      if (isIconOn) {
+        // Book is already in favorites, remove it
+        const removeFromCollectionResponse = await axios.delete(
+          process.env.REACT_APP_COLLECTIONS_URL,
+          {
+            headers: {
+              Authorization: `${token}`,
+            },
+            data: {
+              bookData: { _id: bookData._id }, 
+            },
+          }
+        );
+    
+        console.log('Remove from favorites response:', removeFromCollectionResponse.data);
+      } else {
+        await axios.post(
+          process.env.REACT_APP_COLLECTIONS_URL,
+          { userId, bookData: { title: bookData.title, author: bookData.author } },
+          {
+            headers: {
+              Authorization: `Bearer ${localStorage.getItem('token')}`,
+            },
+          }
+        );
+        setIsIconOn(!isIconOn);
+      }
     } catch (error) {
-      console.error('Error adding book to collection:', error.response?.data || error.message);
+      console.error('Error updating collection:', error.response?.data || error.message);
     }
   };
 

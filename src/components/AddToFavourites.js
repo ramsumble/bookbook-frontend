@@ -31,35 +31,55 @@ const FavIcon = ({ bookData }) => {
   const handleIconClick = async () => {
     try {
       const userId = localStorage.getItem('userId');
+      const token = localStorage.getItem('token');      
 
-      const requests = [
-        axios.post(
+      if (isIconOn) {
+        // Book is already in favorites, remove it
+        const removeFromFavoritesResponse = await axios.delete(
           process.env.REACT_APP_USER_FAVOURITES_URL,
-          { userId, bookData },
           {
             headers: {
-              Authorization: `Bearer ${localStorage.getItem('token')}`,
-            }
+              Authorization: `${token}`,
+            },
+            data: {
+              bookData: { _id: bookData._id }, 
+            },
           }
-        ),
-        axios.post(
-          process.env.REACT_APP_COLLECTIONS_URL,
-          { userId, bookData },
-          {
-            headers: {
-              Authorization: `Bearer ${localStorage.getItem('token')}`,
+        );
+  
+        console.log('Remove from favorites response:', removeFromFavoritesResponse.data);
+        
+      } else {
+        // Book is not in favorites, add it
+        const requests = [
+          axios.post(
+            process.env.REACT_APP_USER_FAVOURITES_URL,
+            { userId, bookData },
+            {
+              headers: {
+                Authorization: `Bearer ${localStorage.getItem('token')}`,
+              }
             }
-          }
-        ),
-      ]
+          ),
+          // Makes sense to also add it to the users overall book collection 
+          axios.post(
+            process.env.REACT_APP_COLLECTIONS_URL,
+            { userId, bookData },
+            {
+              headers: {
+                Authorization: `Bearer ${localStorage.getItem('token')}`,
+              }
+            }
+          ),
+        ];
 
-      await Promise.all(requests);
+        await Promise.all(requests);
+      }
 
-
-      // Update the state so icon remains on if book is in relevant collection
-      setIsIconOn(true);
+      // Update the state so the icon reflects its new state
+      setIsIconOn(!isIconOn);
     } catch (error) {
-      console.error('Error adding book to collection:', error.response?.data || error.message);
+      console.error('Error updating collection:', error.response?.data || error.message);
     }
   };
 
