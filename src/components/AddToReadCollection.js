@@ -1,32 +1,63 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 import '../styles/FavIcon.scss'
 
-const ReadIcon = ({ bookData }) => {
+const FavIcon = ({ bookData }) => {
   const [isIconOn, setIsIconOn] = useState(false);
+
+  useEffect(() => {
+    const fetchUserFavorites = async () => {
+      try {
+        const response = await axios.get(process.env.REACT_APP_USER_READLIST_URL, {
+          headers: {
+            Authorization: `${localStorage.getItem('token')}`, 
+          }
+        });
+        const userReading = response.data;
+        
+        const isBookInReading = userReading.some(
+          (reading) => reading.title === bookData.title && reading.author === bookData.author
+        );
+
+        setIsIconOn(isBookInReading);
+      } catch (error) {
+        console.error('Error fetching user favourites:', error);
+      }
+    };
+
+    fetchUserFavorites();
+  }, [bookData]);
 
   const handleIconClick = async () => {
     try {
-        // Toggle the icon state
-        setIsIconOn((prevIsIconOn) => !prevIsIconOn);
-
       const userId = localStorage.getItem('userId');
 
-      // console.log('Book Data:', bookData); 
-      // console.log('User ID:', userId);
+      const requests = [
+        axios.post(
+          process.env.REACT_APP_USER_READLIST_URL,
+          { userId, bookData },
+          {
+            headers: {
+              Authorization: `Bearer ${localStorage.getItem('token')}`,
+            }
+          }
+        ),
+        axios.post(
+          process.env.REACT_APP_COLLECTIONS_URL,
+          { userId, bookData },
+          {
+            headers: {
+              Authorization: `Bearer ${localStorage.getItem('token')}`,
+            }
+          }
+        ),
+      ]
 
-      // console.log('Data to be sent:', { userId, bookData: { title: bookData.title, author: bookData.author } });
+      await Promise.all(requests);
 
-      // Send a request to the backend to add the book to the user's collection
-      await axios.post(
-        `${process.env.REACT_APP_USER_READLIST_URL}`,
-        { userId, bookData: { title: bookData.title, author: bookData.author } },
-        {
-          headers: {
-            Authorization: `Bearer ${localStorage.getItem('token')}`,
-          },
-        }
-      );
+
+      // Update the state so icon remains on if book is in relevant collection
+      setIsIconOn(true);
     } catch (error) {
       console.error('Error adding book to collection:', error.response?.data || error.message);
     }
@@ -41,4 +72,4 @@ const ReadIcon = ({ bookData }) => {
   );
 };
 
-export default ReadIcon;
+export default FavIcon;

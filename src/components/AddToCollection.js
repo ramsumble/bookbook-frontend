@@ -1,23 +1,37 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 import '../styles/AddtoCollectionIcon.css'
 
 const CollectionIcon = ({ bookData }) => {
   const [isIconOn, setIsIconOn] = useState(false);
 
+  useEffect(() => {
+    const fetchUserCollections = async () => {
+      try {
+        const response = await axios.get(process.env.REACT_APP_USER_COLLECTIONS_URL, {
+          headers: {
+            Authorization: `${localStorage.getItem('token')}`
+          }
+        });
+        const userCollections = response.data;
+
+        const isBookInCollections = userCollections.some(
+          (collection) => collection.title === bookData.title && collection.author === bookData.author
+        );
+
+        setIsIconOn(isBookInCollections);
+      } catch (error) {
+        console.error('Error fetching users collection:', error);
+      }
+    };
+
+    fetchUserCollections();
+  }, [bookData]);
+
   const handleIconClick = async () => {
     try {
-        // Toggle the icon state
-        setIsIconOn((prevIsIconOn) => !prevIsIconOn);
-
       const userId = localStorage.getItem('userId');
 
-      // console.log('Book Data:', bookData); 
-      // console.log('User ID:', userId);
-
-      // console.log('Data to be sent:', { userId, bookData: { title: bookData.title, author: bookData.author } });
-
-      // Send a request to the backend to add the book to the user's collection
       await axios.post(
         `${process.env.REACT_APP_COLLECTIONS_URL}`,
         { userId, bookData: { title: bookData.title, author: bookData.author } },
@@ -27,27 +41,13 @@ const CollectionIcon = ({ bookData }) => {
           },
         }
       );
+
+      setIsIconOn(true);
     } catch (error) {
       console.error('Error adding book to collection:', error.response?.data || error.message);
     }
   };
 
-//   return (
-//     <>
-//       <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" />
-//       <div className="center" onClick={handleIconClick}>
-//         <label className="label">
-//           <input className="label__checkbox" type="checkbox" />
-//           <span className="label__text">
-//             <span className="label__check">
-//               <i className={`fa fa-check icon ${isIconOn ? 'checked' : ''}`}></i>
-//             </span>
-//           </span>
-//         </label>
-//       </div>
-//     </>
-//   );
-// };
   return (
     <div className={`star ${isIconOn ? 'starOn' : 'starOff'}`} onClick={handleIconClick}>
       <svg xmlns="http://www.w3.org/2000/svg" version="1.1">
