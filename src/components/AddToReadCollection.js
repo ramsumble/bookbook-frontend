@@ -12,10 +12,10 @@ const ReadIcon = ({ bookData }) => {
 
       const userId = localStorage.getItem('userId');
 
-      console.log('Book Data:', bookData); 
-      console.log('User ID:', userId);
+      // console.log('Book Data:', bookData); 
+      // console.log('User ID:', userId);
 
-      console.log('Data to be sent:', { userId, bookData: { title: bookData.title, author: bookData.author } });
+      // console.log('Data to be sent:', { userId, bookData: { title: bookData.title, author: bookData.author } });
 
       // Send a request to the backend to add the book to the user's collection
       await axios.post(

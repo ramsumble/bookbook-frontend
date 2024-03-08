@@ -12,10 +12,10 @@ const CollectionIcon = ({ bookData }) => {
 
       const userId = localStorage.getItem('userId');
 
-    //   console.log('Book Data:', bookData); 
-    //   console.log('User ID:', userId);
+      // console.log('Book Data:', bookData); 
+      // console.log('User ID:', userId);
 
-    //   console.log('Data to be sent:', { userId, bookData: { title: bookData.title, author: bookData.author } });
+      // console.log('Data to be sent:', { userId, bookData: { title: bookData.title, author: bookData.author } });
 
       // Send a request to the backend to add the book to the user's collection
       await axios.post(
@@ -32,21 +32,29 @@ const CollectionIcon = ({ bookData }) => {
     }
   };
 
+//   return (
+//     <>
+//       <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" />
+//       <div className="center" onClick={handleIconClick}>
+//         <label className="label">
+//           <input className="label__checkbox" type="checkbox" />
+//           <span className="label__text">
+//             <span className="label__check">
+//               <i className={`fa fa-check icon ${isIconOn ? 'checked' : ''}`}></i>
+//             </span>
+//           </span>
+//         </label>
+//       </div>
+//     </>
+//   );
+// };
   return (
-    <>
-      <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" />
-      <div className="center" onClick={handleIconClick}>
-        <label className="label">
-          <input className="label__checkbox" type="checkbox" />
-          <span className="label__text">
-            <span className="label__check">
-              <i className={`fa fa-check icon ${isIconOn ? 'checked' : ''}`}></i>
-            </span>
-          </span>
-        </label>
-      </div>
-    </>
+    <div className={`star ${isIconOn ? 'starOn' : 'starOff'}`} onClick={handleIconClick}>
+      <svg xmlns="http://www.w3.org/2000/svg" version="1.1">
+        <polygon points="12,3 6,21 21,9 3,9 18,21" />
+      </svg>
+    </div>
   );
-};
+  };
 
 export default CollectionIcon;
