@@ -1,0 +1,40 @@
+@import url('https://fonts.googleapis.com/css2?family=Indie+Flower&display=swap');
+
+
+.body-content {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    height: 100vh;
+    background-image: linear-gradient( to right, rgb(231, 213, 196), rgb(241, 183, 96)); 
+    font-family: "Indie Flower", cursive;
+    padding: 3%;
+}
+
+.top-right {
+    position: absolute;
+    top: 1%;
+    right: 1%;
+  }
+
+.genre-container, .content-container, .placeholder-container {
+    display: flex;
+}
+
+.genre-content, .pie-chart-container {
+    flex-direction: row;
+    padding: 3%
+}
+
+.pie-chart {
+    font-weight: 800;
+}
+
+.collection-content, .placeholder-content {
+    display: flex;
+    flex-direction: column;
+    margin-top: 30px;
+    padding: 3%;
+    margin-right: 9%;
+}
+
