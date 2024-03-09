@@ -5,11 +5,13 @@ import LoginPage from './pages/LoginPage';
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 import BookCollection from './components/BookCollection';
 import ReadingCollection from './components/FetchReadCollection';
+import { AuthProvider } from './components/Authenticate';
 
 
 
 const App = () => {
   return (
+    <AuthProvider>
     <div>
       <Router>
         <Routes> 
@@ -21,6 +23,7 @@ const App = () => {
         </Routes>
       </Router>
     </div>
+    </AuthProvider>
   );
 };
 

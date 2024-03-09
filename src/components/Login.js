@@ -1,19 +1,20 @@
 import React, { useState } from 'react';
 import axios from 'axios';
-import { useNavigate, Link } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 import "../styles/login.css"
 import "../styles/button.scss"
+import { Link } from 'react-router-dom';
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
-
+import { useAuth } from './Authenticate';
 
 const loginURL = process.env.REACT_APP_LOGIN_URL;
-
 
 const LoginForm = () => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const navigate = useNavigate();
+  const { dispatch } = useAuth();
 
   const handleLogin = async () => {
     try {
@@ -29,30 +30,35 @@ const LoginForm = () => {
 
       const { token, userId } = response.data;
 
-      // Store login data to localstorage
+      // Store login data to local storage
       localStorage.setItem('token', token);
       localStorage.setItem('userId', userId);
 
-      // console.log(userId)
+      // Dispatch login action to update authentication state
+      dispatch({ type: 'LOGIN', payload: { userId } });
 
-      // Redirect after logging in
+      // Fetch user's favorite collection after successful login
+      // await fetchUserFavouriteCollection(userId);
+
+      // Navigate to the desired page
       navigate('/search');
     } catch (error) {
       let errorMessage = 'An unknown error occurred';
-  
+
       // Check if no details are provided
       if (error.response && error.response.status === 401) {
         errorMessage = 'Please check your email and password.';
       } else if (!email && !password) {
         errorMessage = 'No details provided';
       }
-  
+
       console.error('Login error:', errorMessage);
-  
+
       // Display a toast notification with the specific error message
       toast.error(`Login error: ${errorMessage}`);
     }
-  }
+  };
+
 
     return (
         <form className='login-form-data' onSubmit={handleLogin}>
@@ -66,7 +72,7 @@ const LoginForm = () => {
                     <button className='fill' type="button" onClick={handleLogin}>Login</button>
                     <ToastContainer 
                     position="bottom-center"
-                    autoClose={3000}
+                    autoClose={2000}
                     hideProgressBar={false}
                     newestOnTop={true}
                     closeOnClick={true}
