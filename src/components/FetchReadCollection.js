@@ -1,9 +1,12 @@
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
+import '../styles/ProgressPage.css'
+import Samburger from './Hamburger';
 
 const ReadingCollection = () => {
   const [books, setBooks] = useState([]);
   const [bookCount, setBookCount] = useState(0);
+  const [genreCounts, setGenreCounts] = useState({});
 
   useEffect(() => {
     const fetchCollections = async () => {
@@ -36,6 +39,19 @@ const ReadingCollection = () => {
         // After fetching all collections, update the state once
         setBooks(allBooks);
         setBookCount(totalCount);
+
+        // Extract all unique genres from BookCollection
+        const bookCollectionGenres = allBooks
+          .filter(book => book.collection === 'BookCollection')
+          .map(book => book.genre);
+
+        // Calculate genre counts
+        const genreCountMap = {};
+        bookCollectionGenres.forEach(genre => {
+          genreCountMap[genre] = (genreCountMap[genre] || 0) + 1;
+        });
+
+        setGenreCounts(genreCountMap);
       } catch (error) {
         console.error('Error fetching collections:', error.response?.data || error.message);
       }
@@ -50,20 +66,23 @@ const ReadingCollection = () => {
   const favouritesCollectionCount = books.filter(book => book.collection === 'FavouritesCollection').length;
 
   return (
-    <div>
+    <div className='body-content'>
+      {/* <div className="hamburger-container">
+        <Samburger />
+      </div> */}
       <h2>Reading Collection</h2>
+      
       <p>Total Books in Reading Collection: {bookCount}</p>
-      <ul>
-        {/* {books.map((book) => (
-          <li key={book._id}>
-            <strong>Title:</strong> {book.title}, <strong>Author:</strong> {book.author}, <strong>Genre:</strong> {book.genre} <strong>Page Count:</strong> {book.pageCount}
-          </li>
-        ))} */}
-      </ul>
 
       <p>Total Books in Reading Collection 1: {readingCollectionCount}</p>
       <p>Total Books in Book Collection 2: {bookCollectionCount}</p>
       <p>Total Books in Favourites Collection 3: {favouritesCollectionCount}</p>
+
+      {/* Display genre counts for BookCollection */}
+      <h3>Genre Counts for Book Collection</h3>
+      {Object.entries(genreCounts).map(([genre, count]) => (
+        <p key={genre}>Total {genre} books: {count}</p>
+      ))}
     </div>
   );
 };
