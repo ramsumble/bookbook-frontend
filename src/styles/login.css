@@ -86,3 +86,67 @@
     -webkit-box-shadow: 0 0 5px rgba(0, 0, 255, 1); 
     -moz-box-shadow: 0 0 5px rgba(0, 0, 255, 1);
 }
+
+
+/* Tablet viewports */
+@media only screen and (min-width: 601px) and (max-width: 1024px) {
+
+    .login-form-data {
+        align-items: center;
+        justify-content: center;
+        flex-direction: column;
+        min-height: 100vh;
+        background: url("../images/output.png") bottom/cover no-repeat;
+    }
+
+    .login-form-container {
+        /* min-height: 100vh; */
+        margin-bottom: 50%;
+        display: flex;
+        justify-content: center;
+        padding: 20vh;
+        border-radius: 8px;
+        width: 60%;
+    }
+
+    .login-image-container {
+        background: none;
+        border-top-left-radius: 8px;
+        border-bottom-left-radius: 8px;
+    }
+
+    .login-container, .redundant-login-container {
+        display: flex;
+        align-items: center;
+        flex-direction: column;
+        margin: 0;
+    }
+
+}
+
+
+/* Mobile viewports */
+
+@media only screen and (max-width: 600px) {
+
+    .login-form-container {
+        width: 100%;
+        min-height: 100vh;
+    }
+
+    .login-image-container {
+        background: none;
+        border-top-left-radius: 8px;
+        border-bottom-left-radius: 8px;
+        
+    }
+
+    .login-container, .redundant-login-container {
+        display: flex;
+        align-items: center;
+        flex-direction: column;
+        margin: 0;
+        flex: 1;
+        
+    }
+}
