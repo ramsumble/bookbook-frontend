@@ -88,3 +88,21 @@
   font-family: "Indie Flower", cursive;
   padding-top: 5vh;
 }
+
+.pagination-container {
+  display: flex;
+  justify-content: center;
+  font-family: "Indie Flower", cursive;
+  padding-bottom: 2%;
+}
+
+.pagination-container button{
+  border-radius: 8px;
+}
+
+.pagination-button {
+  margin-left: 20px;
+  margin-right: 20px;
+  background-color: #cfdce9;
+  border: none;
+}
