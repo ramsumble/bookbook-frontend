@@ -101,8 +101,51 @@
 }
 
 .pagination-button {
-  margin-left: 20px;
-  margin-right: 20px;
-  background-color: #cfdce9;
-  border: none;
+    margin-left: 20px;
+    margin-right: 20px;
+    background-color: #cddeee;
 }
+
+
+/* Tablet viewports */
+@media only screen and (min-width: 601px) and (max-width: 1024px) {
+  .Booksearch-container {
+    flex: 0;
+    padding: 0;
+    margin-left: 10vw;
+  }
+
+  .hamburger-container {
+    flex: 0;
+    display: flex;
+    padding: 0;
+}
+
+}
+
+
+/* Mobile viewports */
+
+@media only screen and (max-width: 600px) {
+  .row1 {
+      display: none;
+  }
+
+  .Booksearch-container {
+    flex: 2 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 0;
+    padding-left: 15%;
+  }
+
+  .hamburger-container {
+    flex: 0;
+  }
+
+  .pagination-container {
+    padding-bottom: 60px ;
+  }
+}
+

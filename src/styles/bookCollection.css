@@ -1,11 +1,7 @@
 @import url('https://fonts.googleapis.com/css2?family=Indie+Flower&display=swap');
 
-/* *{
-  font-family: "Indie Flower", cursive;
-} */
 
-
-.header {
+ .header {
   width: 100%;
   height: 500px;
   display: flex;
@@ -17,13 +13,13 @@
 
 .body {
   background-image: linear-gradient(to top, rgb(194, 133, 63), rgb(131, 89, 34));
-  height: 100vh;
+  min-height: 65vh;
 }
 
 .boarder {
   background-image: linear-gradient(to bottom, rgb(131, 89, 34), rgb(163, 129, 84));
   padding: 7px;
-}
+} 
 
 /* content is used to contain the image, need to use a linear-gradiant so the image isn't so bright  */
 .row1 {
@@ -55,12 +51,13 @@
 .Booksearch-container {
   flex: 2;
   display: flex;
+  flex-direction: column;
   justify-content: center;
   align-items: center;
   padding-bottom: 10%;
-}
+} */
 
-.hamburger-container {
+ .hamburger-container {
   flex: 1;
   display: flex;
   justify-content: right;
@@ -86,17 +83,44 @@
   font-family: "Indie Flower", cursive;
 }
 
+/* Tablet viewports */
+@media only screen and (min-width: 601px) and (max-width: 1024px) {
+  .Booksearch-container {
+    flex: 0;
+    padding: 0;
+    margin-left: 10vw;
+  }
+
+  .hamburger-container {
+    flex: 0;
+    display: flex;
+    padding: 0;
+}
+
+}
+
+
 /* Mobile viewports */
 
 @media only screen and (max-width: 600px) {
-  .login-form-container {
-      display: flex;
-      position: relative;
-      border-radius: 8px;
-      background: linear-gradient(to bottom, rgb(206, 143, 71), rgb(145, 100, 42));
-      background-position: right center;
-      background-repeat: no-repeat;
-      width: 100vw;
+  .row1 {
+      display: none;
   }
 
+  .Booksearch-container {
+    flex: 2 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 0;
+    padding-left: 15%;
+  }
+
+  .hamburger-container {
+    flex: 0;
+  }
+
+  .pagination-container {
+    padding-bottom: 60px ;
+  }
 }
