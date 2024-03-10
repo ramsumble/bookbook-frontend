@@ -79,16 +79,32 @@ const RegistrationForm = () => {
     }
   };
 
+  const handleKeyPress = (e) => {
+    if (e.key === 'Enter') {
+      handleFormSubmit(e);
+    }
+  };
+
   return (
     <form className='form-data' onSubmit={handleFormSubmit}>
         <div className='form-container'>
             <div className='register-container'>
                 <h2>Create Account</h2>
+
                 <input type="text" placeholder="Username" name="username" onChange={handleInputChange} />
                 <input type="email" placeholder="Email" name="email" onChange={handleInputChange} />
-                <input type="password" placeholder="Password" name="password" onChange={handleInputChange} />
+                
+                <input type="password" 
+                placeholder="Password" 
+                name="password" 
+                onChange={handleInputChange}
+                onKeyDown={handleKeyPress}
+                />
+                
                 <button className='fill' type="submit">Register</button>
+
                 <p>Already a member? <Link to="/" className='Register-link' >Login</Link> </p>
+
                 <ToastContainer 
                     position="bottom-center"
                     autoClose={3000}

@@ -59,6 +59,12 @@ const LoginForm = () => {
     }
   };
 
+  const handleKeyPress = (e) => {
+    if (e.key === 'Enter') {
+      handleLogin();
+    }
+  };
+
 
     return (
         <form className='login-form-data' onSubmit={handleLogin}>
@@ -67,9 +73,21 @@ const LoginForm = () => {
                 </div>
                 <div className="login-container">
                     <h2>Login :)</h2>
-                    <input className="login-input" type="text" value={email} onChange={(e) => setEmail(e.target.value)} placeholder="Email" />
-                    <input className="login-input" type="password" value={password} onChange={(e) => setPassword(e.target.value)} placeholder="Password" />
+                    <input className="login-input" 
+                    type="text" value={email} 
+                    onChange={(e) => setEmail(e.target.value)} 
+                    placeholder="Email" 
+                    />
+
+                    <input className="login-input" 
+                    type="password" 
+                    value={password} onChange={(e) => setPassword(e.target.value)} 
+                    placeholder="Password" 
+                    onKeyDown={handleKeyPress}
+                    />
+
                     <button className='fill' type="button" onClick={handleLogin}>Login</button>
+                    
                     <ToastContainer 
                     position="bottom-center"
                     autoClose={2000}
