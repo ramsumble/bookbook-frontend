@@ -29,7 +29,7 @@ $colors: (
   }
 }
 
-button {  
+.fill {  
   color: var(--color);
   transition: 0.25s;
   
@@ -41,7 +41,7 @@ button {
 }
 
 
-button {
+.fill {
   border: 2px solid;
   color: green;
   border-radius: 8px;
