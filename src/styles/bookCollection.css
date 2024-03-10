@@ -17,6 +17,7 @@
 
 .body {
   background-image: linear-gradient(to top, rgb(194, 133, 63), rgb(131, 89, 34));
+  height: 100vh;
 }
 
 .boarder {
@@ -76,4 +77,11 @@
   display: flex;
   flex-wrap: wrap;
   justify-content: space-around;
+}
+
+.placeholder-text {
+  display: flex;
+  justify-content: center;
+  padding-top: 2%;
+  font-family: "Indie Flower", cursive;
 }
