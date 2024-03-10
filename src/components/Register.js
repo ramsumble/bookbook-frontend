@@ -1,15 +1,17 @@
 import React, { useState } from 'react';
 import { ToastContainer, toast } from 'react-toastify';
 import { useNavigate, Link } from 'react-router-dom';
+import { useAuth } from './Authenticate';
 import 'react-toastify/dist/ReactToastify.css';
 import "../styles/register.css"
 import '../styles/button.scss'
 
 const registerUrl = process.env.REACT_APP_REGISTER_URL;
-
+const loginURL = process.env.REACT_APP_LOGIN_URL
 
 const RegistrationForm = () => {
   const navigate = useNavigate()
+  const { dispatch } = useAuth();
 
   const [formData, setFormData] = useState({
     username: '',
@@ -17,7 +19,6 @@ const RegistrationForm = () => {
     password: '',
   });
 
-  
 
   const handleInputChange = (e) => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
@@ -36,7 +37,34 @@ const RegistrationForm = () => {
       });
   
       if (response.ok) {
-        navigate('/search');
+        // Registration successful, now perform login
+        const loginResponse = await fetch(loginURL, {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+          },
+          body: JSON.stringify({
+            email: formData.email,
+            password: formData.password,
+          }),
+        });
+
+        if (loginResponse.ok) {
+          const { token, userId } = await loginResponse.json();
+
+          // Store login data to local storage
+          localStorage.setItem('token', token);
+          localStorage.setItem('userId', userId);
+
+          // Dispatch login action to update authentication state
+          dispatch({ type: 'LOGIN', payload: { userId } });
+          
+          // Redirect after logging in 
+          navigate('/search');
+        } else {
+          // Handle login failure after successful registration
+          toast.error('Login after registration failed.');
+        }
       } else {
         if (response.status === 400) {
           toast.error('Registration failed. Please fill in all fields.');
