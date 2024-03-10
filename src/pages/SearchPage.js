@@ -29,12 +29,16 @@ const SearchPage = () => {
         </div>
         <div className="boarder"></div>
         <div className="body">
+        {searchResults.length === 0 ? (
+          <h2 className="temp-Text">Search your favourite books bellow</h2>
+        ) : (
           <div className="card-container">
             {console.log(searchResults)}
             {searchResults.map((book) => (
               <BookCard key={book._id} book={book} />
             ))}
-        </div>
+          </div>
+        )}
       </div>
     </>
   );

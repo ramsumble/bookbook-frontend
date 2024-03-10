@@ -39,7 +39,7 @@ const ReadingCollection = () => {
             },
           });
 
-          console.log(`Response for ${collectionName}:`, response.data);
+          // console.log(`Response for ${collectionName}:`, response.data);
 
           // Update the state with the data from the response
           const booksWithCollection = response.data.map(book => ({ ...book, collection: collectionName }));

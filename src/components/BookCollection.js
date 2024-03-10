@@ -19,7 +19,7 @@ const BookCollection = () => {
                         Authorization: `${token}`,
                     },
                 });
-                console.log('Entire Response:', response.data);
+                // console.log('Entire Response:', response.data);
 
                 // Update the bookCollection state with the data from the response
                 setBookCollection(response.data);

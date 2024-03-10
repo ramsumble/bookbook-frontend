@@ -17,7 +17,7 @@ const BookSearch = ({ onSearchResults }) => {
 
       const token = localStorage.getItem('token');
 
-      console.log(token)
+      // console.log(token)
       
 
       const response = await axios.get(`${process.env.REACT_APP_BACKEND_URL}`, 
