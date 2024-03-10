@@ -85,3 +85,18 @@
   padding-top: 2%;
   font-family: "Indie Flower", cursive;
 }
+
+/* Mobile viewports */
+
+@media only screen and (max-width: 600px) {
+  .login-form-container {
+      display: flex;
+      position: relative;
+      border-radius: 8px;
+      background: linear-gradient(to bottom, rgb(206, 143, 71), rgb(145, 100, 42));
+      background-position: right center;
+      background-repeat: no-repeat;
+      width: 100vw;
+  }
+
+}
