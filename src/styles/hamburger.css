@@ -8,7 +8,7 @@
 .Menu {
   display: flex;
   flex-direction: column; 
-  width: 6vw;
+  z-index: 1;
 }
 
 .menu-items, .logout-button  {
@@ -21,16 +21,35 @@ text-align: center;
 color: rgb(22, 83, 197);
 font-weight: 800;
 border: none;
+width: 8vw;
 }
 
 .Hamburger {
 display: flex;
 flex-direction: column;
 align-items: self-end;
+
 }
 
 
 .menu-items:hover, .logout-button:hover  {
 background-color: rgb(209, 209, 233);
 font-size: 1.1em;
+}
+
+
+@media only screen and (max-width: 600px) {
+
+.Hamburger{
+  z-index: 2;
+}
+
+.Menu {
+  display: flex;
+  justify-content: right;
+}
+
+.menu-items, .logout-button{
+  width: 30vw
+}
 }
