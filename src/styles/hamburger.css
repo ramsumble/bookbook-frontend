@@ -19,3 +19,9 @@
     background-color: #e9e4e4;
     border-radius: 8px;
   }
+
+  .Hamburger {
+    display: flex;
+    flex-direction: column;
+    align-items: self-end;
+  }

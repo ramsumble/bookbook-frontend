@@ -5,7 +5,7 @@
     position: relative;
     display: flex;
     flex-direction: column;
-    height: 100vh;
+    min-height: 100vh;
     background-image: linear-gradient( to right, rgb(231, 213, 196), rgb(241, 183, 96)); 
     font-family: "Indie Flower", cursive;
     padding: 3%;
