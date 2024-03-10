@@ -1,27 +1,36 @@
-/* do something here eventually */
 
 .Samburger {
-    position: fixed;
-    top: 20px;
-    right: 20px;
+  position: fixed;
+  top: 20px;
+  right: 20px;
 }
 
 .Menu {
-    display: flex;
-    flex-direction: column; 
-    /* position: fixed; */
-    padding: 5px;
-  }
-  
-  .menu-items {
-    padding: 5px;
-    margin: 4px;
-    background-color: #e9e4e4;
-    border-radius: 8px;
-  }
+  display: flex;
+  flex-direction: column; 
+  width: 6vw;
+}
 
-  .Hamburger {
-    display: flex;
-    flex-direction: column;
-    align-items: self-end;
-  }
+.menu-items, .logout-button  {
+padding: 5px;
+margin: 4px;
+background-color: #e9e4e4;
+border-radius: 8px;
+text-decoration: none;
+text-align: center;
+color: rgb(22, 83, 197);
+font-weight: 800;
+border: none;
+}
+
+.Hamburger {
+display: flex;
+flex-direction: column;
+align-items: self-end;
+}
+
+
+.menu-items:hover, .logout-button:hover  {
+background-color: rgb(209, 209, 233);
+font-size: 1.1em;
+}
