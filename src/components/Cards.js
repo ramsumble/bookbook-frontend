@@ -8,11 +8,14 @@ import ReadIcon from './AddToReadCollection';
 
 const BookCard = ({ book }) => {
     const renderTooltip = (text) => <Tooltip>{text}</Tooltip>;
+
+    // Need to add placeholder image when there is no image from API
+    const imageSrc = book.image || 'https://en.meming.world/images/en/2/2c/Surprised_Pikachu_HD.jpg';
   
     return (
       <>
         <Card className='card-container' style={{ width: '15rem', margin: '90px' }}>
-          <Card.Img variant="top" src={book.image} alt={book.title} />
+          <Card.Img variant="top" src={imageSrc} alt={book.title} />
           <Card.Body className='card-body'>
             <Card.Title>{book.title}</Card.Title>
             <Card.Text>{book.author}</Card.Text>
@@ -49,5 +52,5 @@ const BookCard = ({ book }) => {
       </>
     );
   };
-
-export default BookCard;
+  
+  export default BookCard;
