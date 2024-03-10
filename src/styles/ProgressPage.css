@@ -21,6 +21,10 @@
     display: flex;
 }
 
+.placeholder-container {
+    padding-bottom: 50px;
+}
+
 .genre-content, .pie-chart-container {
     flex-direction: row;
     padding: 3%
@@ -38,3 +42,45 @@
     margin-right: 9%;
 }
 
+.line-chart-container {
+    margin-left: 10vw;
+}
+
+/* Tablet viewports */
+@media only screen and (min-width: 601px) and (max-width: 1024px) {
+    .genre-container, .content-container, .placeholder-container {
+        display: flex;
+        font-size: 1em;
+        margin-bottom: 20px;
+    }
+
+    .pie-chart-container, .bar-chart-container, .line-chart-container {
+        margin: 25px;
+    }
+    .genre-container {
+        padding-top: 5%;
+    }
+    .pie-chart-container {
+        padding: 0;
+    }
+
+    .line-chart-container { 
+        margin-left: 15vw;
+    }
+  }
+  
+  
+  /* Mobile viewports */
+  
+  @media only screen and (max-width: 600px) {
+    .genre-container, .content-container, .placeholder-container {
+        display: block;
+        font-size: 1em;
+        padding-top: 10vh;
+    }
+
+    .pie-chart-container, .bar-chart-container, .line-chart-container {
+        margin-left: -25px;
+    }
+  }
+  
